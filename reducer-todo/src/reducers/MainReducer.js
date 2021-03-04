@@ -6,11 +6,16 @@ const MainReducer = (state, action) => {
             let toDoId = state.currentId + 1;
             return { ...state, ToDos: [...state.ToDos, {...action.payload, id: toDoId}], currentId: state.currentId + 1}
         case "CLEAR":
-            return { ...state, ToDos: [] }
+            let newToDos = state.ToDos.filter(toDo => toDo.complete === false)
+            return { ...state, ToDos: newToDos }
         case "TOGGLE":
             let ToDos = state.ToDos.map(toDo => {
-                if (toDo.id === action.payload) {
-                    toDo.complete = !toDo.complete
+                console.log(toDo.id)
+                console.log(action.payload.toDoId)
+                if (toDo.id == action.payload.toDoId) {
+                    console.log(toDo.complete)
+                    toDo.complete = action.payload.completed
+                    console.log(toDo.complete)
                 }
                 return toDo;
             })

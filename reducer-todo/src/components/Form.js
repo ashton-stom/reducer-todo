@@ -12,7 +12,7 @@ export default function Form(props) {
                 onChange={e => setInput(e.target.value)}
             />
             <button onClick={() => props.add(input)}>Add Item</button>
-            <button>Clear Completed</button>
+            <button onClick={() => props.clear()}>Clear Completed</button>
         </>
     )
 }

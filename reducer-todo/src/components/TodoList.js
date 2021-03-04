@@ -1,7 +1,9 @@
 
 
 export default function ToDoList(props) {
-
+    const handleChange = (e, toDo) => {
+        props.toggle(toDo.id, e)
+    }
     return(
         <div>
             {props.toDos.map(toDo => {
@@ -10,9 +12,8 @@ export default function ToDoList(props) {
                         <input 
                             type="checkbox"
                             name="checkbox"
-                            checked={toDo.completed}
-                            onChange={() => props.toggle()}
-                            value={toDo.completed}
+                            checked={toDo.complete}
+                            onChange={(e) => handleChange(e, toDo)}
                             />
                     </p>
                 )

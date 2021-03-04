@@ -17,18 +17,18 @@ function App() {
     dispatch({ type: 'ADD', payload: { text: toDoName, complete: false } })
   }
 
-  const completed = toDoId => {
-    dispatch({ type: 'TOGGLE', payload: toDoId })
+  const completed = (toDoId, completed) => {
+    dispatch({ type: 'TOGGLE', payload: {toDoId, completed} })
   }
 
-  const clearItems = toDoName => {
-    dispatch({ type: 'CLEAR', payload: {} })
+  const clearItems = () => {
+    dispatch({ type: 'CLEAR', payload: null })
   }
   console.log(state)
   return (
     <div>
-      <Form add={addItem} toggle={completed} />
-      <ToDoList toDos={state.ToDos} toggle={completed}/>
+      <Form add={addItem} toggle={completed} clear={clearItems} />
+      <ToDoList toDos={state.ToDos} toggle={completed} />
     </div>
   );
 }
